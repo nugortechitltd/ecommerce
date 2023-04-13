@@ -35,9 +35,6 @@ class FrontendController extends Controller
         $poster = Poster::latest()->take(1)->get();
         $blog_latest = Blog::latest()->take(3)->get();
 
-        $total_review = Orderproduct::where('product_id', $featured->first()->id)->where('review', '!=', null)->count();
-        $total_star = OrderProduct::where('product_id', $featured->first()->id)->where('review', '!=', null)->sum('star');
-
         
         return view('frontend.index.index', [
             'categories' => $categories,
@@ -50,8 +47,6 @@ class FrontendController extends Controller
             'deals' => $deals,
             'poster' => $poster,
             'blog_latest' => $blog_latest,
-            'total_review' => $total_review,
-            'total_star' => $total_star,
         ]);
     }
 
