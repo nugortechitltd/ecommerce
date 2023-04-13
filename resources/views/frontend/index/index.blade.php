@@ -157,7 +157,7 @@
             <div class="slider-div">
                 <div class="swiper rts-sixSlide-over">
                     <div class="swiper-wrapper">
-                        {{-- @foreach ($products as $product)
+                        @foreach ($products as $product)
                             <div class="swiper-slide">
                                 <div class="product-item element-item1">
                                     <a href="{{route('product.details', $product->slug)}}" class="product-image image-hover-variations">
@@ -190,7 +190,7 @@
                                     </div>
                                 </div>
                             </div>
-                        @endforeach   --}}
+                        @endforeach  
                     </div>
                 </div>
             </div>
@@ -258,7 +258,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    {{-- @foreach ($featured as $feat_product)
+                    @foreach ($featured as $feat_product)
                     <div class="col-xl-3 col-md-4 col-sm-6 col-12">
                         <div class="product-item element-item1">
                             <a href="{{route('product.details', $feat_product->slug)}}" class="product-image image-hover-variations">
@@ -271,7 +271,7 @@
                             </a>
                             <div class="bottom-content">
                                 <div class="star-rating">
-                                    @php
+                                    {{-- @php
                                     $total_rating = 0;
                                     if($total_review != 0) {
                                         $total_rating = $total_star / $total_review;
@@ -285,7 +285,7 @@
                                     for ($j = $total_rating + 1 ; $j <= 5; $j++) {
                                         echo '<i class="far fa-star"></i>';
                                     }
-                                    @endphp
+                                    @endphp --}}
                                     
                                 </div>
                                 <a href="{{route('product.details', $feat_product->slug)}}" class="product-name">{{$feat_product->product_name}}</a>
@@ -309,7 +309,7 @@
                             </div>
                         </div>
                     </div>
-                    @endforeach --}}
+                    @endforeach
                 </div>
             </div>
         </div>
