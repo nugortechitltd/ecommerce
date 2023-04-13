@@ -271,16 +271,16 @@
                             </a>
                             <div class="bottom-content">
                                 <div class="star-rating">
-                                    {{-- @php
-                                    $total_review = App\Models\OrderProduct::where('product_id', $feat_product->id)->where('review', '!=', null)->count();
-                                    $total_star = App\Models\OrderProduct::where('product_id', $feat_product->id)->where('review', '!=', null)->sum('star');
+                                    @php
+                                    // $total_review = App\Models\OrderProduct::where('product_id', $feat_product->id)->where('review', '!=', null)->count();
+                                    // $total_star = App\Models\OrderProduct::where('product_id', $feat_product->id)->where('review', '!=', null)->sum('star');
 
                                     $total_rating = 0;
                                     if($total_review != 0) {
                                         $total_rating = $total_star / $total_review;
                                     }
 
-                                    @endphp --}}
+                                    @endphp
                                     @php
                                     for ($i = 1; $i <= $total_rating; $i++) {
                                         echo '<i class="fas fa-star"></i>';
