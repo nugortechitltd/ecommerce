@@ -271,7 +271,7 @@
                             </a>
                             <div class="bottom-content">
                                 <div class="star-rating">
-                                    {{-- @php
+                                    @php
                                     $total_rating = 0;
                                     if($total_review != 0) {
                                         $total_rating = $total_star / $total_review;
@@ -285,7 +285,7 @@
                                     for ($j = $total_rating + 1 ; $j <= 5; $j++) {
                                         echo '<i class="far fa-star"></i>';
                                     }
-                                    @endphp --}}
+                                    @endphp
                                     
                                 </div>
                                 <a href="{{route('product.details', $feat_product->slug)}}" class="product-name">{{$feat_product->product_name}}</a>
