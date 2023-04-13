@@ -141,7 +141,7 @@
     </div>
 
     <!--================= Hand Picked Section Start Here =================-->
-    {{-- <div class="rts-hand-picked-products-section">
+    <div class="rts-hand-picked-products-section">
         <div class="container">
             <div class="section-header section-header3 text-center">
                 <div class="wrapper">
@@ -190,18 +190,12 @@
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
-                        
-                       
-                            
-
-
-                            
+                        @endforeach  
                     </div>
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
     <!--================= Hand Picked Section End Here =================-->
 
     
