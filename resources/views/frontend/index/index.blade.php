@@ -94,8 +94,8 @@
         </div>
     </div>
 @endsection
-@section('content')
-    <div class="rts-offer-section">
+{{-- @section('content') --}}
+    {{-- <div class="rts-offer-section">
         <div class="container">
             <div class="rts-offer-inner">
                 @if (App\Models\Offer::where('status', '1')->exists())
@@ -108,12 +108,10 @@
                 
             </div>
         </div>
-    </div>
-
-    <div></div>
+    </div> --}}
 
 
-    <div class="rts-new-collection-section section-gap">
+    {{-- <div class="rts-new-collection-section section-gap">
         <div class="container">
             <div class="recent-products-header section-header">
             </div>
@@ -139,10 +137,10 @@
                 <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!--================= Hand Picked Section Start Here =================-->
-    <div class="rts-hand-picked-products-section">
+    {{-- <div class="rts-hand-picked-products-section">
         <div class="container">
             <div class="section-header section-header3 text-center">
                 <div class="wrapper">
@@ -202,13 +200,13 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!--================= Hand Picked Section End Here =================-->
 
     
     <!--================= Deal Section Start Here =================-->
     
-    <div class="rts-deal-section1">
+    {{-- <div class="rts-deal-section1">
         <div class="container">
             <div class="section-inner">
                 <div class="row">
@@ -246,12 +244,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!--================= Deal Section End Here =================-->
 
 
     <!--================= Featured Product Section Start Here =================-->
-    <div class="rts-featured-product-section1">
+    {{-- <div class="rts-featured-product-section1">
         <div class="container">
             <div class="rts-featured-product-section-inner">
                 <div class="section-header section-header3 text-center">
@@ -323,11 +321,11 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!--================= Featured Product Section End Here =================-->
 
      <!--================= Posters Section Start Here =================-->
-     <div class="rts-posters-section1">
+     {{-- <div class="rts-posters-section1">
         <div class="container">
             <div class="row">
                 @forelse ($poster as $poster)
@@ -403,11 +401,11 @@
                 @endforelse
             </div>
         </div>
-    </div>
+    </div> --}}
     <!--================= Posters Section End Here =================-->
 
     <!--================= Brand Section Start Here =================-->
-    <div class="rts-brands-section1 brand-bg3">
+    {{-- <div class="rts-brands-section1 brand-bg3">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-12">
@@ -417,7 +415,6 @@
                                 @foreach ($brands as $brand)
                                 <div class="swiper-slide">
                                     <img src="{{asset('uploads/brand')}}/{{$brand->brand_image}}"alt="Brand Logo">
-                                    {{-- <a class="brand-front" href="#"><img src="{{asset('uploads/brand')}}/{{$brand->brand_image}}"alt="Brand Logo"></a> --}}
                                 </div>
                                 @endforeach
                             </div>
@@ -426,9 +423,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!--================= Brand Section End Here =================-->
-    <div class="product-details-popup-wrapper">
+    {{-- <div class="product-details-popup-wrapper">
         <div class="rts-product-details-section rts-product-details-section2 product-details-popup-section">
             <div class="product-details-popup">
                 <button class="product-details-close-btn"><i class="fal fa-times"></i></button>
@@ -489,68 +486,10 @@
                         </div>
                     </div>
                     @endforeach
-                    {{-- <div class="col-xl-4 col-md-6 col-sm-12">
-                        <div class="full-wrapper wrapper-2">
-                            <div class="image-part">
-                                <a href="#" class="image"><img src="{{asset('frontend/assets/images/featured/img-2.jpg')}}" alt="Featured Image"></a>
-                            </div>
-                            <div class="blog-content">
-                                <span class="date-full">
-                                    <span class="day">25</span>
-                                    <br>
-                                    <span class="month">Jul</span>
-                                </span>
-                                <ul class="blog-meta">
-                                    <li><a href="#">WINTER DRESS</a></li>
-                                </ul>
-                                <div class="title">
-                                    <a href="#">Once determined, you need to come up with a name a legal structure</a>
-                                </div>
-                                <div class="author-info d-flex align-items-center">
-                                    <div class="avatar"><img src="{{asset('frontend/assets/images/featured/author.png')}}" alt="Author Image"></div>
-                                    <div class="info">
-                                        <p class="author-name">REACTHEMES</p>
-                                        <p class="author-dsg">Author</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6 col-sm-12">
-                        <div class="full-wrapper wrapper-3">
-                            <div class="image-part">
-                                <a href="#" class="image"><img src="{{asset('frontend/assets/images/featured/img-3.jpg')}}" alt="Featured Image"></a>
-                            </div>
-                            <div class="blog-content">
-                                <span class="date-full">
-                                    <span class="day">25</span>
-                                    <br>
-                                    <span class="month">Jul</span>
-                                </span>
-                                <ul class="blog-meta">
-                                    <li><a href="#">WINTER DRESS</a></li>
-                                </ul>
-                                <div class="title">
-                                    <a href="#">At the limit, statically generated, edge delivered a food</a>
-                                </div>
-                                <div class="author-info d-flex align-items-center">
-                                    <div class="avatar"><img src="{{asset('frontend/assets/images/featured/author.png')}}" alt="Author Image"></div>
-                                    <div class="info">
-                                        <p class="author-name">REACTHEMES</p>
-                                        <p class="author-dsg">Author</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     
-@endsection
-
-@section('footer_script')
-
-@endsection
+{{-- @endsection --}}
