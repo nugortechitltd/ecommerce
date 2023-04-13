@@ -271,7 +271,7 @@
                             </a>
                             <div class="bottom-content">
                                 <div class="star-rating">
-                                    @php
+                                    {{-- @php
                                     $total_review = App\Models\OrderProduct::where('product_id', $feat_product->id)->where('review', '!=', null)->count();
                                     $total_star = App\Models\OrderProduct::where('product_id', $feat_product->id)->where('review', '!=', null)->sum('star');
 
@@ -288,7 +288,7 @@
                                     for ($j = $total_rating + 1 ; $j <= 5; $j++) {
                                         echo '<i class="far fa-star"></i>';
                                     }
-                                    @endphp
+                                    @endphp --}}
                                     
                                 </div>
                                 <a href="{{route('product.details', $feat_product->slug)}}" class="product-name">{{$feat_product->product_name}}</a>
