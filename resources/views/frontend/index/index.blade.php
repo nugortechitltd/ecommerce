@@ -95,8 +95,8 @@
         </div>
     </div>
 @endsection --}}
-{{-- @section('content') --}}
-    {{-- <div class="rts-offer-section">
+@section('content')
+    <div class="rts-offer-section">
         <div class="container">
             <div class="rts-offer-inner">
                 @if (App\Models\Offer::where('status', '1')->exists())
@@ -109,10 +109,10 @@
                 
             </div>
         </div>
-    </div> --}}
+    </div>
 
 
-    {{-- <div class="rts-new-collection-section section-gap">
+    <div class="rts-new-collection-section section-gap">
         <div class="container">
             <div class="recent-products-header section-header">
             </div>
@@ -138,7 +138,7 @@
                 <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
             </div>
         </div>
-    </div> --}}
+    </div>
 
     <!--================= Hand Picked Section Start Here =================-->
     {{-- <div class="rts-hand-picked-products-section">
@@ -493,4 +493,4 @@
     </div> --}}
 
     
-{{-- @endsection --}}
+@endsection
