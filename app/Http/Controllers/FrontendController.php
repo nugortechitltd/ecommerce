@@ -24,8 +24,7 @@ class FrontendController extends Controller
 {
     //website page
     function home() {
-        // $categories = Category::all();
-        // $maincategories = Maincategory::all();
+        $categories = Category::all();
         // $products = Product::latest()->take(9)->get();
         // $featured = Product::where('featured', '1')->latest()->take(4)->get();
         // $brands = Brand::latest()->take(6)->get();
@@ -41,8 +40,7 @@ class FrontendController extends Controller
 
         
         return view('frontend.index.index', [
-            // 'categories' => $categories,
-            // 'maincategories' => $maincategories,
+            'categories' => $categories,
             // 'products' => $products,
             // 'featured' => $featured,
             // 'brands' => $brands,
