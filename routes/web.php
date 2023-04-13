@@ -50,7 +50,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/site', [FrontendController::class, 'home'])->name('site');
+Route::get('/', [FrontendController::class, 'home'])->name('site');
 Route::get('/product/details/{slug}', [FrontendController::class, 'product_details'])->name('product.details');
 Route::post('/getSize', [FrontendController::class, 'getSize']);
 Route::get('/product-quick-view/{id}', [FrontendController::class, 'product_quick_view']);

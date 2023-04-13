@@ -24,38 +24,36 @@ class FrontendController extends Controller
 {
     //website page
     function home() {
-        $categories = Category::all();
-        $maincategories = Maincategory::all();
-        $products = Product::latest()->take(9)->get();
-        // $featured = Product::where('featured', '1')->get();
-        $featured = Product::where('featured', '1')->latest()->take(4)->get();
-        // $featured = Product::all();
-        $brands = Brand::latest()->take(6)->get();
-        $coupon = Coupon::all();
-        $site = Aboutus::latest()->take(1);
-        $socials = Social::all();
-        $deals = Deal::latest()->take(1)->get();
-        $poster = Poster::latest()->take(1)->get();
-        $blog_latest = Blog::latest()->take(3)->get();
+        // $categories = Category::all();
+        // $maincategories = Maincategory::all();
+        // $products = Product::latest()->take(9)->get();
+        // $featured = Product::where('featured', '1')->latest()->take(4)->get();
+        // $brands = Brand::latest()->take(6)->get();
+        // $coupon = Coupon::all();
+        // $site = Aboutus::latest()->take(1);
+        // $socials = Social::all();
+        // $deals = Deal::latest()->take(1)->get();
+        // $poster = Poster::latest()->take(1)->get();
+        // $blog_latest = Blog::latest()->take(3)->get();
 
-        $total_review = Orderproduct::where('product_id', $featured->first()->id)->where('review', '!=', null)->count();
-        $total_star = OrderProduct::where('product_id', $featured->first()->id)->where('review', '!=', null)->sum('star');
+        // $total_review = Orderproduct::where('product_id', $featured->first()->id)->where('review', '!=', null)->count();
+        // $total_star = OrderProduct::where('product_id', $featured->first()->id)->where('review', '!=', null)->sum('star');
 
         
         return view('frontend.index.index', [
-            'categories' => $categories,
-            'maincategories' => $maincategories,
-            'products' => $products,
-            'featured' => $featured,
-            'brands' => $brands,
-            'coupon' => $coupon,
-            'site' => $site,
-            'socials' => $socials,
-            'deals' => $deals,
-            'poster' => $poster,
-            'blog_latest' => $blog_latest,
-            'total_review' => $total_review,
-            'total_star' => $total_star,
+            // 'categories' => $categories,
+            // 'maincategories' => $maincategories,
+            // 'products' => $products,
+            // 'featured' => $featured,
+            // 'brands' => $brands,
+            // 'coupon' => $coupon,
+            // 'site' => $site,
+            // 'socials' => $socials,
+            // 'deals' => $deals,
+            // 'poster' => $poster,
+            // 'blog_latest' => $blog_latest,
+            // 'total_review' => $total_review,
+            // 'total_star' => $total_star,
         ]);
     }
 
@@ -73,13 +71,6 @@ class FrontendController extends Controller
         $reviews = OrderProduct::where('product_id', $details->first()->id)->where('review', '!=', null)->get();
         $total_review = OrderProduct::where('product_id', $details->first()->id)->where('review', '!=', null)->count();
         $total_star = OrderProduct::where('product_id', $details->first()->id)->where('review', '!=', null)->sum('star');
-        
-        // if($total_review != 0) {
-        //     $total_rating = $total_star / $total_review;
-        // } else {
-        //     $total_rating = 0;
-        // }
-
         $sizes = Size::all();
         return view('frontend.product_details.product_details', [
             'details' => $details,
