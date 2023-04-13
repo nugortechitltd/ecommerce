@@ -258,7 +258,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    @foreach ($featured as $feat_product)
+                    @forelse ($featured as $feat_product)
                     <div class="col-xl-3 col-md-4 col-sm-6 col-12">
                         <div class="product-item element-item1">
                             <a href="{{route('product.details', $feat_product->slug)}}" class="product-image image-hover-variations">
@@ -309,7 +309,11 @@
                             </div>
                         </div>
                     </div>
-                    @endforeach
+                    @empty
+                    <div class="col-12">
+                        <h2>Nothing given</h2>
+                    </div>
+                    @endforelse
                 </div>
             </div>
         </div>
