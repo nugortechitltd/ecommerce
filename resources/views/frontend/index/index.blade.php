@@ -157,7 +157,7 @@
             <div class="slider-div">
                 <div class="swiper rts-sixSlide-over">
                     <div class="swiper-wrapper">
-                        @forelse ($products as $product)
+                        @foreach ($products as $product)
                             <div class="swiper-slide">
                                 <div class="product-item element-item1">
                                     <a href="{{route('product.details', $product->slug)}}" class="product-image image-hover-variations">
@@ -190,9 +190,7 @@
                                     </div>
                                 </div>
                             </div>
-                            @empty
-                            <h2>No product</h2>
-                        @endforelse 
+                        @endforeach  
                     </div>
                 </div>
             </div>
@@ -260,7 +258,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    @forelse ($featured as $feat_product)
+                    @foreach ($featured as $feat_product)
                     <div class="col-xl-3 col-md-4 col-sm-6 col-12">
                         <div class="product-item element-item1">
                             <a href="{{route('product.details', $feat_product->slug)}}" class="product-image image-hover-variations">
@@ -311,11 +309,7 @@
                             </div>
                         </div>
                     </div>
-                    @empty
-                    <div class="col-12">
-                        <h2>Nothing given</h2>
-                    </div>
-                    @endforelse
+                    @endforeach
                 </div>
             </div>
         </div>
