@@ -35,6 +35,7 @@ class FrontendController extends Controller
         $poster = Poster::latest()->take(1)->get();
         $blog_latest = Blog::latest()->take(3)->get();
 
+        
         $total_review = Orderproduct::where('product_id', $featured->first()->id)->where('review', '!=', null)->count();
         $total_star = OrderProduct::where('product_id', $featured->first()->id)->where('review', '!=', null)->sum('star');
                                   
