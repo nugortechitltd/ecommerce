@@ -272,9 +272,6 @@
                             <div class="bottom-content">
                                 <div class="star-rating">
                                     @php
-                                    // $total_review = App\Models\OrderProduct::where('product_id', $feat_product->id)->where('featured', '1')->where('review', '!=', null)->count();
-                                    // $total_star = App\Models\OrderProduct::where('product_id', $feat_product->id)->where('featured', '1')->where('review', '!=', null)->sum('star');
-
                                     $total_rating = 0;
                                     if($total_review != 0) {
                                         $total_rating = $total_star / $total_review;
