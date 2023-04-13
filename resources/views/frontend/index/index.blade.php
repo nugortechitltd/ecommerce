@@ -1,6 +1,6 @@
-{{-- @extends('frontend.master.master') --}}
-Hi this is me
-{{-- @section('banner')
+@extends('frontend.master.master')
+
+@section('banner')
     <div class="banner banner-1 bg-image">
         <div class="container">
             <div class="banner-inner">
@@ -94,7 +94,7 @@ Hi this is me
             </div>
         </div>
     </div>
-@endsection --}}
+@endsection
 {{-- @section('content') --}}
     {{-- <div class="rts-offer-section">
         <div class="container">
