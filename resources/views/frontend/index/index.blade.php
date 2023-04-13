@@ -157,7 +157,7 @@
             <div class="slider-div">
                 <div class="swiper rts-sixSlide-over">
                     <div class="swiper-wrapper">
-                        @foreach ($products as $product)
+                        {{-- @foreach ($products as $product)
                             <div class="swiper-slide">
                                 <div class="product-item element-item1">
                                     <a href="{{route('product.details', $product->slug)}}" class="product-image image-hover-variations">
@@ -190,7 +190,7 @@
                                     </div>
                                 </div>
                             </div>
-                        @endforeach  
+                        @endforeach   --}}
                     </div>
                 </div>
             </div>
