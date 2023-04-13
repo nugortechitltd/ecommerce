@@ -1,6 +1,6 @@
 @extends('frontend.master.master')
 
-{{-- @section('banner')
+@section('banner')
     <div class="banner banner-1 bg-image">
         <div class="container">
             <div class="banner-inner">
@@ -94,7 +94,7 @@
             </div>
         </div>
     </div>
-@endsection --}}
+@endsection
 @section('content')
     <div class="rts-offer-section">
         <div class="container">
@@ -201,7 +201,7 @@
     
     <!--================= Deal Section Start Here =================-->
     
-    {{-- <div class="rts-deal-section1">
+    <div class="rts-deal-section1">
         <div class="container">
             <div class="section-inner">
                 <div class="row">
@@ -239,12 +239,12 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
     <!--================= Deal Section End Here =================-->
 
 
     <!--================= Featured Product Section Start Here =================-->
-    {{-- <div class="rts-featured-product-section1">
+    <div class="rts-featured-product-section1">
         <div class="container">
             <div class="rts-featured-product-section-inner">
                 <div class="section-header section-header3 text-center">
@@ -316,11 +316,11 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
     <!--================= Featured Product Section End Here =================-->
 
      <!--================= Posters Section Start Here =================-->
-     {{-- <div class="rts-posters-section1">
+     <div class="rts-posters-section1">
         <div class="container">
             <div class="row">
                 @forelse ($poster as $poster)
@@ -396,11 +396,11 @@
                 @endforelse
             </div>
         </div>
-    </div> --}}
+    </div>
     <!--================= Posters Section End Here =================-->
 
     <!--================= Brand Section Start Here =================-->
-    {{-- <div class="rts-brands-section1 brand-bg3">
+    <div class="rts-brands-section1 brand-bg3">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-12">
@@ -418,9 +418,9 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
     <!--================= Brand Section End Here =================-->
-    {{-- <div class="product-details-popup-wrapper">
+    <div class="product-details-popup-wrapper">
         <div class="rts-product-details-section rts-product-details-section2 product-details-popup-section">
             <div class="product-details-popup">
                 <button class="product-details-close-btn"><i class="fal fa-times"></i></button>
@@ -484,7 +484,7 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
 
     
 @endsection

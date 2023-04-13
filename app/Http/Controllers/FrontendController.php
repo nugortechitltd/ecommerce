@@ -26,32 +26,32 @@ class FrontendController extends Controller
     function home() {
         $categories = Category::all();
         $products = Product::latest()->take(9)->get();
-        // $featured = Product::where('featured', '1')->latest()->take(4)->get();
-        // $brands = Brand::latest()->take(6)->get();
-        // $coupon = Coupon::all();
-        // $site = Aboutus::latest()->take(1);
-        // $socials = Social::all();
-        // $deals = Deal::latest()->take(1)->get();
-        // $poster = Poster::latest()->take(1)->get();
-        // $blog_latest = Blog::latest()->take(3)->get();
+        $featured = Product::where('featured', '1')->latest()->take(4)->get();
+        $brands = Brand::latest()->take(6)->get();
+        $coupon = Coupon::all();
+        $site = Aboutus::latest()->take(1);
+        $socials = Social::all();
+        $deals = Deal::latest()->take(1)->get();
+        $poster = Poster::latest()->take(1)->get();
+        $blog_latest = Blog::latest()->take(3)->get();
 
-        // $total_review = Orderproduct::where('product_id', $featured->first()->id)->where('review', '!=', null)->count();
-        // $total_star = OrderProduct::where('product_id', $featured->first()->id)->where('review', '!=', null)->sum('star');
+        $total_review = Orderproduct::where('product_id', $featured->first()->id)->where('review', '!=', null)->count();
+        $total_star = OrderProduct::where('product_id', $featured->first()->id)->where('review', '!=', null)->sum('star');
 
         
         return view('frontend.index.index', [
             'categories' => $categories,
             'products' => $products,
-            // 'featured' => $featured,
-            // 'brands' => $brands,
-            // 'coupon' => $coupon,
-            // 'site' => $site,
-            // 'socials' => $socials,
-            // 'deals' => $deals,
-            // 'poster' => $poster,
-            // 'blog_latest' => $blog_latest,
-            // 'total_review' => $total_review,
-            // 'total_star' => $total_star,
+            'featured' => $featured,
+            'brands' => $brands,
+            'coupon' => $coupon,
+            'site' => $site,
+            'socials' => $socials,
+            'deals' => $deals,
+            'poster' => $poster,
+            'blog_latest' => $blog_latest,
+            'total_review' => $total_review,
+            'total_star' => $total_star,
         ]);
     }
 
