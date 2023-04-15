@@ -65,6 +65,7 @@
 
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item" href="{{route('inventory', $product->id)}}">Inventory</a>
+                                                <a class="dropdown-item" href="{{route('product.edit', $product->id)}}">Edit</a>
                                                 <a class="dropdown-item" href="{{route('product.delete', $product->id)}}">Delete</a>
                                             </div>
                                         </div>

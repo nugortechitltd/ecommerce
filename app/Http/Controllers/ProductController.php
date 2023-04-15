@@ -192,6 +192,102 @@ class ProductController extends Controller
         return back();
     }
 
-    
-    
+    // product_edit
+    function product_edit($product_id) {
+        $categories = Category::all();
+        $brands = Brand::all();
+        $product = Product::find($product_id);
+        $product_thumb = Producthumb::where('product_id', $product_id)->get();
+        return view('backend.product.product_edit', [
+            'categories' => $categories,
+            'brand' => $brands,
+            'product' => $product,
+            'product_thumb' => $product_thumb,
+        ]);
+    }
+
+    function product_update(Request $request) {
+        $request->validate([
+            'category_id'=> 'required',
+            'subcategory_id'=> 'required',
+            'product_name'=> 'required',
+            'product_price'=> 'required',
+            'short_desp'=> 'required',
+            'long_desc'=> 'required',
+            'preview_one' => 'mimes:jpg,jpeg,gif,png,webp|max:5000',
+            'preview_two' => 'mimes:jpg,jpeg,gif,png,webp|max:5000',
+            'thumbnail.*' => 'image|mimes:jpg,jpeg,gif,png,webp',
+        ], [
+            'long_desc.required' => 'The description field is required.',
+            'short_desp.required' => 'The short description field is required.',
+        ]);
+
+        // Preview one
+        if($request->preview_one != null) {
+            $image1 = Product::where('id', $request->product_id)->first()->preview_one;
+            $delete_from1 = public_path('uploads/products/preview/'.$image1);
+            unlink($delete_from1);
+            $uploaded_file_one = $request->preview_one;
+            $extension = $uploaded_file_one->getClientOriginalExtension();
+            $file_name_one = str_replace(' ', '-', Str::lower($request->product_name)).'-'.rand(1000, 9999).'.'.$extension;
+            Image::make($uploaded_file_one)->resize(338, 450)->save(public_path('uploads/products/preview/'.$file_name_one));
+            Product::find($request->product_id)->update([
+                'preview_one' => $file_name_one
+            ]);
+        }
+
+        // Preview two
+        if($request->preview_two != null) {
+            $image2 = Product::where('id', $request->product_id)->first()->preview_two;
+            $delete_from2 = public_path('uploads/products/preview/'.$image2);
+            unlink($delete_from2);
+            $uploaded_file_two = $request->preview_two;
+            $extension = $uploaded_file_two->getClientOriginalExtension();
+            $file_name_two = str_replace(' ', '-', Str::lower($request->product_name)).'-'.rand(1000, 9999).'.'.$extension;
+            Image::make($uploaded_file_two)->resize(338, 450)->save(public_path('uploads/products/preview/'.$file_name_two));
+            Product::find($request->product_id)->update([
+                'preview_two' => $file_name_two
+            ]);
+        }
+
+        // Thumbnail
+        if($request->thumbnail != null) {
+            $thumb_image = Producthumb::where('product_id', $request->product_id)->get();
+            foreach($thumb_image as $thumb) {
+                $delete_from_thumb = public_path('uploads/products/thumbnail/'.$thumb->thumbnail);
+                unlink($delete_from_thumb);
+            }
+            Producthumb::where('product_id', $request->product_id)->delete();
+            $uploaded_thumbnails = $request->thumbnail;
+            foreach ($uploaded_thumbnails as $thumbnail) {
+                $thumb_extension = $thumbnail->getClientOriginalExtension();
+                $thumb_name = str_replace(' ', '-', Str::lower($request->product_name)).'-'.rand(1000,9999).'.'.$thumb_extension;
+                Image::make($thumbnail)->resize(450, 511)->save(public_path('uploads/products/thumbnail/'.$thumb_name));
+                Producthumb::insert([
+                    'product_id' => $request->product_id,
+                    'added_by' => Auth::id(),
+                    'thumbnail' => $thumb_name,
+                ]);
+            }
+        }
+        $active = 1;
+        Product::find($request->product_id)->update([
+            'category_id' => $request->category_id,
+            'subcategory_id' => $request->subcategory_id,
+            'product_name' => $request->product_name,
+            'product_price' => $request->product_price,
+            'brand_id' => $request->brand_id,
+            'discount' => $request->discount,
+            'short_desp' => $request->short_desp,
+            'long_desc' => $request->long_desc,
+            'featured' => $active,
+            'additional_desc' => $request->additional_desc,
+            'slug' => str_replace(' ', '-', Str::lower($request->product_name)).'-'.rand(1000, 9999),
+            'after_discount' => $request->product_price - ($request->product_price * $request->discount)/100,
+            'added_by' => Auth::id(),
+            'created_at' => Carbon::now(),
+        ]);
+
+        return back()->withSuccess('Product updated successfully');
+    }
 }

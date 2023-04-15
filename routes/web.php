@@ -111,6 +111,8 @@ Route::get('/product/list', [ProductController::class, 'product_list'])->name('p
 Route::post('/getSubcategory', [ProductController::class, 'getSubcategory'])->name('getSubcategory');
 Route::post('/product/store', [ProductController::class, 'product_store'])->name('product.store');
 Route::get('/product/delete/{product_id}', [ProductController::class, 'product_delete'])->name('product.delete');
+Route::get('/product/edit/{product_id}', [ProductController::class, 'product_edit'])->name('product.edit');
+Route::post('/product/update', [ProductController::class, 'product_update'])->name('product.update');
 Route::get('/product/status/{product_id}', [ProductController::class, 'product_status'])->name('product.status');
 
 
