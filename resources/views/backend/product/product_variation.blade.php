@@ -65,6 +65,9 @@
                                         @error('size_name')
                                             <strong class="text-danger">{{$message}}</strong>
                                         @enderror
+                                        @if (session('taken'))
+                                            <p class="text text-danger fw-bold">{{ session('taken') }}</p>
+                                        @endif
                                     </div>
                                     <div class="col-md-12 mt-5">
                                         <button type="submit" class="btn btn-primary">Add size</button>

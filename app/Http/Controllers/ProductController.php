@@ -177,6 +177,12 @@ class ProductController extends Controller
         
     }
 
+    // Inventory delete
+    function inventory_delete($inventory_id) {
+        Inventory::find($inventory_id)->delete();
+        return back()->withSuccess('Inventory added successfully');
+    }
+
     // product status
     function product_status($product_id) {
         $product_info = Product::find($product_id);

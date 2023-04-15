@@ -90,7 +90,7 @@ class FrontendController extends Controller
     // getSize
     function getSize(Request $request) {
         $sizes = Inventory::where('product_id', $request->product_id)->where('color_id', $request->color_id)->get();
-        
+
         $str = '';
         foreach ($sizes as $size) {
         $str .= '<div class="form-check size-option form-option form-check-inline mb-2 size-label">

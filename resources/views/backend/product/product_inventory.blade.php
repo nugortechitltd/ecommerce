@@ -109,7 +109,7 @@
                                     </td>
                                     <td>{{$inventory->rel_to_product->product_name == null ? 'NA': $inventory->rel_to_product->product_name}}</td>
                                     <td>{{$inventory->quantity}}</td>
-                                    <td><a href="" class="badge badge-danger">Delete</a></td>
+                                    <td><a href="{{route('inventory.delete', $inventory->id)}}" class="badge badge-danger">Delete</a></td>
                                 </tr>
                                 @endforeach
                             </tbody>

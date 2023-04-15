@@ -138,6 +138,7 @@ Route::get('/size/delete/{size_id}', [VariationController::class, 'size_delete']
 // Inventory
 Route::get('/product/inventory/{product_id}', [ProductController::class, 'inventory'])->name('inventory');
 Route::post('/product/inventory/store', [ProductController::class, 'inventory_store'])->name('inventory.store');
+Route::get('/product/inventory/delete/{inventory_id}', [ProductController::class, 'inventory_delete'])->name('inventory.delete');
 
 // Customer Authentication
 Route::get('/customer/register', [FrontendController::class, 'customer_register'])->name('customer.register');

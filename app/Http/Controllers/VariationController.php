@@ -34,9 +34,20 @@ class VariationController extends Controller
         $request->validate([
             'size_name' => 'unique:sizes'
         ]);
+        if($request->size_name == null) {
+            if(Size::where('size_name', null)->exists()) {
+                return back()->with('taken', 'The size name has already been taken.');
+            } else {
+                $size_name = null;
+            }
+        } else {
+            $size_name = $request->size_name;
+        }
         Size::insert([
-            'size_name' => $request->size_name,
+            'size_name' => $size_name,
         ]);
+       
+        
         return back()->withSuccess('Size added successfully');
     }
     // Color delete
