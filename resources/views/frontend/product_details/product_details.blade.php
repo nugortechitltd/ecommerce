@@ -122,7 +122,7 @@
                                         @endforeach
                                     @else
                                     @foreach (App\Models\Inventory::where('product_id', $details->first()->id)->get() as $size)
-                                    @if ($size->rel_to_size->id == 1)
+                                    @if ($size->rel_to_size->id == null)
                                     <div class="form-check size-option form-option form-check-inline mb-2 size-label">
                                         <input class="form-check-input" value="{{$size->rel_to_size->id}}" type="radio" name="size_id" id="size{{$size->id}}">
                                         <label class="form-option-label product__details__label form-option-size" for="size{{$size->id}}"><span>{{$size->size_name}}</span></label>
