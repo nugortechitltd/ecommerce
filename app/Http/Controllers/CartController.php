@@ -55,12 +55,12 @@ class CartController extends Controller
         if($request->abcd == 1) {
             if(Auth::guard('customerauth')->check()) {
                 if($request->color_id == null) {
-                    $color_id = 1;
+                    $color_id = null;
                 } else {
                     $color_id = $request->color_id;
                 }
                 if($request->size_id == null) {
-                    $size_id = 1;
+                    $size_id = null;
                 } else {
                     $size_id = $request->size_id;
                 }
@@ -84,12 +84,12 @@ class CartController extends Controller
         } else {
             if(Auth::guard('customerauth')->check()) {
                 if($request->color_id == null) {
-                    $color_id = 1;
+                    $color_id = null;
                 } else {
                     $color_id = $request->color_id;
                 }
                 if($request->size_id == null) {
-                    $size_id = 1;
+                    $size_id = null;
                 } else {
                     $size_id = $request->size_id;
                 }
@@ -139,10 +139,10 @@ class CartController extends Controller
                 $quantity = 1;
             }
             if($product_info->color_id == null) {
-                $color_id = 1;
+                $color_id = null;
             }
             if($product_info->size_id == null) {
-                $size_id = 1;
+                $size_id = null;
             }
             
             if(Inventory::where('product_id', $product_id)->where('color_id', $color_id)->where('size_id', $size_id)->exists()) {
@@ -168,12 +168,12 @@ class CartController extends Controller
         if($request->abcd == 1) {
             if(Auth::guard('customerauth')->check()) {
                 if($request->color_id == null) {
-                    $color_id = 1;
+                    $color_id = null;
                 } else {
                     $color_id = $request->color_id;
                 }
                 if($request->size_id == null) {
-                    $size_id = 1;
+                    $size_id = null;
                 } else {
                     $size_id = $request->size_id;
                 }
@@ -202,12 +202,12 @@ class CartController extends Controller
         } else {
             if(Auth::guard('customerauth')->check()) {
                 if($request->color_id == null) {
-                    $color_id = 1;
+                    $color_id = null;
                 } else {
                     $color_id = $request->color_id;
                 }
                 if($request->size_id == null) {
-                    $size_id = 1;
+                    $size_id = null;
                 } else {
                     $size_id = $request->size_id;
                 }
