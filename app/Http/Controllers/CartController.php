@@ -135,18 +135,18 @@ class CartController extends Controller
 
     // cart_add_single
     function cart_add_single($product_id) {
-        if(Auth::guard('customerauth')->check()) {
-            $product_info = Inventory::where('product_id', $product_id)->get();
-            foreach($product_info as $products) {
-                 $products->color_id;
-                 $c = Color::where('id', $products->color_id)->where('color_code', null)->get();
+        // if(Auth::guard('customerauth')->check()) {
+        //     $product_info = Inventory::where('product_id', $product_id)->get();
+        //     foreach($product_info as $products) {
+        //          $products->color_id;
+        //          $c = Color::where('id', $products->color_id)->where('color_code', null)->get();
                  
                 //  print_r($c->first()->id);
                 //  foreach($c as $color) {
                 //     $colors = $color->color_name;
                 //     $color = Color::where('color_name', null)->get();
                 //  }
-            }
+            // }
             // foreach($product_info as $products) {
             //      $products->size_id;
             //      $d = Size::where('id', $products->size_id)->get();
@@ -154,7 +154,7 @@ class CartController extends Controller
             //         $sizes = $size->size_name;
             //      }
             // }
-            print_r($c);
+            // print_r($c);
 
             
             // print_r($product_info->first()->color_id);
@@ -183,9 +183,9 @@ class CartController extends Controller
             // } else {
             //     return back()->withError('Product has color and size');
             // }
-        } else {
-            return redirect()->route('customer.login')->withError('Please login first to add cart.');
-        }
+        // } else {
+        //     return redirect()->route('customer.login')->withError('Please login first to add cart.');
+        // }
     }
 
     // product_add
