@@ -271,14 +271,14 @@
                             </a>
                             <div class="bottom-content">
                                 <div class="star-rating">
-                                    @php
+                                    {{-- @php
                                     for ($i = 1; $i <= $total_rating; $i++) {
                                         echo '<i class="fas fa-star"></i>';
                                     }
                                     for ($j = $total_rating + 1 ; $j <= 5; $j++) {
                                         echo '<i class="far fa-star"></i>';
                                     }
-                                    @endphp
+                                    @endphp --}}
                                     
                                 </div>
                                 <a href="{{route('product.details', $feat_product->slug)}}" class="product-name">{{$feat_product->product_name}}</a>
