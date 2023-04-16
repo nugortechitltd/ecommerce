@@ -56,6 +56,11 @@ class CartController extends Controller
         ]);
         if($request->abcd == 1) {
             if(Auth::guard('customerauth')->check()) {
+                if($request->quantity == null) {
+                    $quantity = 1;
+                } else {
+                    $quantity = $request->quantity;
+                }
                 if($request->color_id == null) {
                     $color_id = 1;
                 } else {
@@ -75,7 +80,7 @@ class CartController extends Controller
                         'product_id' => $request->product_id,
                         'color_id' => $color_id,
                         'size_id' => $size_id,
-                        'quantity' => $request->quantity,
+                        'quantity' => $quantity,
                         'created_at' => Carbon::now(),
                     ]);
                     return back()->withSuccess('Cart added successfully');
@@ -85,6 +90,11 @@ class CartController extends Controller
             }
         } else {
             if(Auth::guard('customerauth')->check()) {
+                if($request->quantity == null) {
+                    $quantity = 1;
+                } else {
+                    $quantity = $request->quantity;
+                }
                 if($request->color_id == null) {
                     $color_id = 1;
                 } else {

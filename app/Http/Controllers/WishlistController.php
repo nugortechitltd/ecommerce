@@ -54,7 +54,6 @@ class WishlistController extends Controller
             }
             
             if(Inventory::where('product_id', $product_id)->where('color_id', $color_id)->where('size_id', $size_id)->exists()) {
-                echo 'valid';
                 Wishlist::insert([
                     'customer_id' => Auth::guard('customerauth')->id(),
                     'product_id' => $product_id,
@@ -66,7 +65,6 @@ class WishlistController extends Controller
                 return back()->withSuccess('wishlist added successfully');
             } else {
                 return back()->withError('Product has color and size');
-                echo 'not valid';
             }
         } else {
             return redirect()->route('customer.login')->withError('Please login first to add cart.');
