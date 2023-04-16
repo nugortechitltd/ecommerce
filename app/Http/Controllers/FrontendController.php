@@ -36,13 +36,13 @@ class FrontendController extends Controller
         $blog_latest = Blog::latest()->take(3)->get();
 
         
-        $total_review = Orderproduct::where('product_id', $featured->first()->id)->where('review', '!=', null)->count();
-        $total_star = OrderProduct::where('product_id', $featured->first()->id)->where('review', '!=', null)->sum('star');
+        // $total_review = Orderproduct::where('product_id', $featured->first()->id)->where('review', '!=', null)->count();
+        // $total_star = OrderProduct::where('product_id', $featured->first()->id)->where('review', '!=', null)->sum('star');
                                   
-        $total_rating = 0;
-        if($total_review != 0) {
-            $total_rating = $total_star / $total_review;
-        }
+        // $total_rating = 0;
+        // if($total_review != 0) {
+        //     $total_rating = $total_star / $total_review;
+        // }
 
         
         return view('frontend.index.index', [
@@ -56,7 +56,7 @@ class FrontendController extends Controller
             'deals' => $deals,
             'poster' => $poster,
             'blog_latest' => $blog_latest,
-            'total_rating' => $total_rating,
+            // 'total_rating' => $total_rating,
         ]);
     }
 
@@ -74,6 +74,8 @@ class FrontendController extends Controller
         $reviews = OrderProduct::where('product_id', $details->first()->id)->where('review', '!=', null)->get();
         $total_review = OrderProduct::where('product_id', $details->first()->id)->where('review', '!=', null)->count();
         $total_star = OrderProduct::where('product_id', $details->first()->id)->where('review', '!=', null)->sum('star');
+
+        $available_size = Inventory::where('product_id', $details->first()->id)->first()->size_id;
         $sizes = Size::all();
         return view('frontend.product_details.product_details', [
             'details' => $details,
@@ -84,6 +86,7 @@ class FrontendController extends Controller
             'reviews' => $reviews,
             'total_review' => $total_review,
             'total_star' => $total_star,
+            'available_size' => $available_size,
         ]);
     }
 
