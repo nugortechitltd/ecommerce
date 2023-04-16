@@ -86,12 +86,12 @@ class CartController extends Controller
         } else {
             if(Auth::guard('customerauth')->check()) {
                 if($request->color_id == null) {
-                    $color_id = null;
+                    $color_id = 1;
                 } else {
                     $color_id = $request->color_id;
                 }
                 if($request->size_id == null) {
-                    $size_id = null;
+                    $size_id = 1;
                 } else {
                     $size_id = $request->size_id;
                 }
