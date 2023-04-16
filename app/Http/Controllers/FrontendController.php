@@ -96,9 +96,14 @@ class FrontendController extends Controller
 
         $str = '';
         foreach ($sizes as $size) {
+        if ($size->rel_to_size->size_name == null) {
+            $size_name = 'NA';
+        } else {
+            $size_name = $size->rel_to_size->size_name;
+        }
         $str .= '<div class="form-check size-option form-option form-check-inline mb-2 size-label">
         <input class="form-check-input" value="'.$size->rel_to_size->id.'" type="radio" name="size_id" id="size'.$size->rel_to_size->id.'">
-        <label class="form-option-label form-option-size" for="size'.$size->rel_to_size->id.'"><span >'.$size->rel_to_size->size_name.'</span></label>
+        <label class="form-option-label form-option-size" for="size'.$size->rel_to_size->id.'"><span >'.$size_name.'</span></label>
         </div>';
         }
 
