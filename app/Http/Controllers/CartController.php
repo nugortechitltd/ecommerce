@@ -158,7 +158,7 @@ class CartController extends Controller
             }
             
             if(Inventory::where('product_id', $product_id)->where('color_id', $color_id)->where('size_id', $size_id)->exists()) {
-                if( 1 > (Inventory::where('product_id', $product_id)->where('color_id', $color_id)->where('size_id', $size_id)->first()->quantity)) {
+                if( 2 > (Inventory::where('product_id', $product_id)->where('color_id', $color_id)->where('size_id', $size_id)->quantity)) {
                     Cart::insert([
                         'customer_id' => Auth::guard('customerauth')->id(),
                         'product_id' => $product_id,
