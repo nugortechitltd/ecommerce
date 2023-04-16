@@ -485,7 +485,7 @@
                                 <i class="mdi mdi-finance"></i>
                                 <span class="nav-text">Transactions</span><b class="caret"></b>
                             </a>
-                            <div class="collapse {{ Request::is('payment*') ? 'show' : '' }}">
+                            <div class="collapse {{ Request::is('payment') ? 'show' : '' }}">
                                 <ul class="sub-menu" id="authentication" data-parent="#sidebar-menu">
                                     <li class="{{ Request::is('payment') ? 'active' : '' }}" >
                                         <a href="{{ route('payment') }}">

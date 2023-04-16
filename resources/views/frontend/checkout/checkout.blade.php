@@ -111,15 +111,6 @@
                             </div>
                     </div>
                 </div>
-
-                {{-- <div class="color-item  form-option form-check-inline mb-1">
-                    <span class="color" style="background-color: #FF0000; border: 1px solid #333">
-                    <i class="fas fa-check"></i>
-                    </span>
-                    <input class="color_id" type="radio" name="color_id" id="color1" value="1" checked="">
-                    <label for="color1">Red</label>
-                    <div class="color-arrow"><i class="far fa-long-arrow-right"></i></div>
-                </div> --}}
                 <div class="action-item m-0">
                     <div class="mb-3 checkout">
                             <div class="form-check payment-label">

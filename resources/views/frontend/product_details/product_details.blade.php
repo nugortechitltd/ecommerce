@@ -140,16 +140,6 @@
                                     <strong class="text-danger">{{ $message }}</strong>
                                 @enderror
                             </div>
-
-                            {{-- {{$available_sizes}}
-                            @foreach ($available_sizes as $size_value)
-                                {{$size_value->first()->size_name}}
-                            @endforeach --}}
-                            {{-- @foreach ($available_sizes as $size)
-                                {{$size}}
-                            @endforeach --}}
-                            {{-- Quantity --}}
-
                             
                             <div class="product-bottom-action">
                                     <div class="d-flex w-100">
