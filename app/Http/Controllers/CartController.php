@@ -87,7 +87,7 @@ class CartController extends Controller
                         return back()->withSuccess('Cart added successfully');
                     }
                 } else {
-                    return back()->withSuccess('Product has color and size');
+                    return back()->withError('Product has color and size');
                 }
                 
             } else {
@@ -120,6 +120,8 @@ class CartController extends Controller
                         ]);
                         return back()->withSuccess('Wishlist added successfully');
                     }
+                } else {
+                    return back()->withError('Product has color and size');
                 }
             } else {
                 return redirect()->route('customer.login')->withError('Please login first to add cart.');
