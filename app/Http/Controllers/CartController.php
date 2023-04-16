@@ -50,17 +50,17 @@ class CartController extends Controller
     }
     //cart store
     function cart_store(Request $request) {
-        $request->validate([
-            'size_id' => 'required',
-            'color_id' => 'required',
-        ]);
+        // $request->validate([
+        //     'size_id' => 'required',
+        //     'color_id' => 'required',
+        // ]);
         if($request->abcd == 1) {
             if(Auth::guard('customerauth')->check()) {
-                if($request->quantity == null) {
-                    $quantity = 1;
-                } else {
-                    $quantity = $request->quantity;
-                }
+                // if($request->quantity == null) {
+                //     $quantity = 1;
+                // } else {
+                //     $quantity = $request->quantity;
+                // }
                 if($request->color_id == null) {
                     $color_id = 1;
                 } else {
@@ -72,29 +72,29 @@ class CartController extends Controller
                     $size_id = $request->size_id;
                 }
         
-                if(($request->quantity) > (Inventory::where('product_id', $request->product_id)->where('color_id', $color_id)->where('size_id', $size_id)->first()->quantity)) {
-                    return back()->with('total_stock', 'Total Stock ' . Inventory::where('product_id', $request->product_id)->where('color_id', $color_id)->where('size_id', $size_id)->first()->quantity);
+                if(Inventory::where('product_id', $request->product_id)->where('color_id', $color_id)->where('size_id', $size_id)->exists()) {
+                    if(($request->quantity) > (Inventory::where('product_id', $request->product_id)->where('color_id', $color_id)->where('size_id', $size_id)->first()->quantity)) {
+                        return back()->with('total_stock', 'Total Stock ' . Inventory::where('product_id', $request->product_id)->where('color_id', $color_id)->where('size_id', $size_id)->first()->quantity);
+                    } else {
+                        Cart::insert([
+                            'customer_id' => Auth::guard('customerauth')->id(),
+                            'product_id' => $request->product_id,
+                            'color_id' => $color_id,
+                            'size_id' => $size_id,
+                            'quantity' => $request->quantity,
+                            'created_at' => Carbon::now(),
+                        ]);
+                        return back()->withSuccess('Cart added successfully');
+                    }
                 } else {
-                    Cart::insert([
-                        'customer_id' => Auth::guard('customerauth')->id(),
-                        'product_id' => $request->product_id,
-                        'color_id' => $color_id,
-                        'size_id' => $size_id,
-                        'quantity' => $quantity,
-                        'created_at' => Carbon::now(),
-                    ]);
-                    return back()->withSuccess('Cart added successfully');
+                    return back()->withSuccess('Product has color and size');
                 }
+                
             } else {
                 return redirect()->route('customer.login')->withError('Please login first to add cart.');
             }
         } else {
             if(Auth::guard('customerauth')->check()) {
-                if($request->quantity == null) {
-                    $quantity = 1;
-                } else {
-                    $quantity = $request->quantity;
-                }
                 if($request->color_id == null) {
                     $color_id = 1;
                 } else {
@@ -105,19 +105,21 @@ class CartController extends Controller
                 } else {
                     $size_id = $request->size_id;
                 }
-        
-                if(($request->quantity) > (Inventory::where('product_id', $request->product_id)->where('color_id', $color_id)->where('size_id', $size_id)->first()->quantity)) {
-                    return back()->with('total_stock', 'Total Stock ' . Inventory::where('product_id', $request->product_id)->where('color_id', $color_id)->where('size_id', $size_id)->first()->quantity);
-                } else {
-                    Wishlist::insert([
-                        'customer_id' => Auth::guard('customerauth')->id(),
-                        'product_id' => $request->product_id,
-                        'color_id' => $color_id,
-                        'size_id' => $size_id,
-                        'quantity' => $request->quantity,
-                        'created_at' => Carbon::now(),
-                    ]);
-                    return back()->withSuccess('Wishlist added successfully');
+
+                if(Inventory::where('product_id', $request->product_id)->where('color_id', $color_id)->where('size_id', $size_id)->exists()) {
+                    if(($request->quantity) > (Inventory::where('product_id', $request->product_id)->where('color_id', $color_id)->where('size_id', $size_id)->first()->quantity)) {
+                        return back()->with('total_stock', 'Total Stock ' . Inventory::where('product_id', $request->product_id)->where('color_id', $color_id)->where('size_id', $size_id)->first()->quantity);
+                    } else {
+                        Wishlist::insert([
+                            'customer_id' => Auth::guard('customerauth')->id(),
+                            'product_id' => $request->product_id,
+                            'color_id' => $color_id,
+                            'size_id' => $size_id,
+                            'quantity' => $request->quantity,
+                            'created_at' => Carbon::now(),
+                        ]);
+                        return back()->withSuccess('Wishlist added successfully');
+                    }
                 }
             } else {
                 return redirect()->route('customer.login')->withError('Please login first to add cart.');

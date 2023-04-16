@@ -51,7 +51,7 @@
         <p>
             {{$product->short_desp}}
         </p>
-        <form action="{{route('product.add')}}" method="POST">
+        <form action="{{route('cart.store')}}" method="POST">
             @csrf
         <div class="product-bottom-action">
             <div class="cart-edit">
