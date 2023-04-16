@@ -158,14 +158,19 @@ class CartController extends Controller
             }
             
             if(Inventory::where('product_id', $product_id)->where('color_id', $color_id)->where('size_id', $size_id)->exists()) {
-                Cart::insert([
-                    'customer_id' => Auth::guard('customerauth')->id(),
-                    'product_id' => $product_id,
-                    'color_id' => $color_id,
-                    'size_id' => $size_id,
-                    'quantity' => $quantity,
-                    'created_at' => Carbon::now(),
-                ]);
+                if(($quantity) > (Inventory::where('product_id', $product_id)->where('color_id', $color_id)->where('size_id', $size_id)->first()->quantity)) {
+                    Cart::insert([
+                        'customer_id' => Auth::guard('customerauth')->id(),
+                        'product_id' => $product_id,
+                        'color_id' => $color_id,
+                        'size_id' => $size_id,
+                        'quantity' => $quantity,
+                        'created_at' => Carbon::now(),
+                    ]);
+                } else {
+                    return back()->withError('Out of stock');
+                }
+                
                 return back()->withSuccess('Cart added successfully');
             } else {
                 return back()->withError('Product has color and size');
