@@ -57,8 +57,8 @@ class VariationController extends Controller
     }
     // variation list
     function variation_list() {
-        $colors = Color::all();
-        $sizes = Size::all();
+        $colors = Color::where('color_code', '!=', null)->get();
+        $sizes = Size::where('size_name', '!=', null)->get();
         return view('backend.product.product_variation_list', [
             'colors' => $colors,
             'sizes' => $sizes,
