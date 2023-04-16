@@ -135,57 +135,34 @@ class CartController extends Controller
 
     // cart_add_single
     function cart_add_single($product_id) {
-        // if(Auth::guard('customerauth')->check()) {
-        //     $product_info = Inventory::where('product_id', $product_id)->get();
-        //     foreach($product_info as $products) {
-        //          $products->color_id;
-        //          $c = Color::where('id', $products->color_id)->where('color_code', null)->get();
-                 
-                //  print_r($c->first()->id);
-                //  foreach($c as $color) {
-                //     $colors = $color->color_name;
-                //     $color = Color::where('color_name', null)->get();
-                //  }
-            // }
-            // foreach($product_info as $products) {
-            //      $products->size_id;
-            //      $d = Size::where('id', $products->size_id)->get();
-            //      foreach($d as $size) {
-            //         $sizes = $size->size_name;
-            //      }
-            // }
-            // print_r($c);
-
+        if(Auth::guard('customerauth')->check()) {
+            $product_info = Product::find($product_id);
+            if($product_info->quantity == null) {
+                $quantity = 1;
+            }
+            if($product_info->color_id == null) {
+                $color_id = 1;
+            }
+            if($product_info->size_id == null) {
+                $size_id = 1;
+            }
             
-            // print_r($product_info->first()->color_id);
-
-            // Color::find('')
-            // if($product_info->quantity == null) {
-            //     $quantity = 1;
-            // }
-            // if($product_info->color_id == null) {
-            //     $color_id = null;
-            // }
-            // if($product_info->size_id == null) {
-            //     $size_id = null;
-            // }
-            
-            // if(Inventory::where('product_id', $product_id)->where('color_id', $color_id)->where('size_id', $size_id)->exists()) {
-            //     Cart::insert([
-            //         'customer_id' => Auth::guard('customerauth')->id(),
-            //         'product_id' => $product_id,
-            //         'color_id' => $color_id,
-            //         'size_id' => $size_id,
-            //         'quantity' => $quantity,
-            //         'created_at' => Carbon::now(),
-            //     ]);
-            //     return back()->withSuccess('Cart added successfully');
-            // } else {
-            //     return back()->withError('Product has color and size');
-            // }
-        // } else {
-        //     return redirect()->route('customer.login')->withError('Please login first to add cart.');
-        // }
+            if(Inventory::where('product_id', $product_id)->where('color_id', $color_id)->where('size_id', $size_id)->exists()) {
+                Cart::insert([
+                    'customer_id' => Auth::guard('customerauth')->id(),
+                    'product_id' => $product_id,
+                    'color_id' => $color_id,
+                    'size_id' => $size_id,
+                    'quantity' => $quantity,
+                    'created_at' => Carbon::now(),
+                ]);
+                return back()->withSuccess('Cart added successfully');
+            } else {
+                return back()->withError('Product has color and size');
+            }
+        } else {
+            return redirect()->route('customer.login')->withError('Please login first to add cart.');
+        }
     }
 
     // product_add
