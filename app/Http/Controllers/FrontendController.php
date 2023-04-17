@@ -75,7 +75,7 @@ class FrontendController extends Controller
         $total_review = OrderProduct::where('product_id', $details->first()->id)->where('review', '!=', null)->count();
         $total_star = OrderProduct::where('product_id', $details->first()->id)->where('review', '!=', null)->sum('star');
 
-        $available_size = Inventory::where('product_id', $details->first()->id)->first()->size_id;
+        // $available_size = Inventory::where('product_id', $details->first()->id)->first()->size_id;
         $sizes = Size::all();
         return view('frontend.product_details.product_details', [
             'details' => $details,
